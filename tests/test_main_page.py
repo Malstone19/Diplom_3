@@ -41,7 +41,7 @@ class TestMainPage:
         main_page.click_on_first_ingredient()
         main_page.close_ingredient_details_window()
 
-        assert main_page.find_ingredient_details_window() is False
+        assert not main_page.find_ingredient_details_window()
 
     @allure.title('Проверка увеличения счетчика на ингредиенте, при добавлении его в заказ')
     def test_drag_and_drop_top_bun_counter_not_zero(self, driver):
