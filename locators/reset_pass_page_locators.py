@@ -10,3 +10,6 @@ class ResetPassPageLocators:
 
     # Кнопка отображения пароля
     SHOW_PASS_BUTTON = By.XPATH, './/div[contains(@class,"icon-action")]'
+
+    EMAIL_INPUT = By.XPATH, './/label[text()="Email"]/parent::div/input'
+    PASS_INPUT = By.XPATH, './/label[text()="Пароль"]/parent::div/input'

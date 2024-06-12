@@ -26,3 +26,5 @@ class MainPageLocators:
 
     # Номер заказа, во всплывающем окне, при оформлении
     ORDER_NUMBER = By.XPATH, './/h2[contains(@class, "title_shadow__3ikwq")]'
+
+    ORDER_FEED_HEADER = By.XPATH, './/h1[text()="Лента заказов"]'
