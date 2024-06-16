@@ -2,6 +2,7 @@ import allure
 import data
 from pages.orders_feed_page import OrdersFeedPage
 from pages.profile_page import ProfilePage
+from pages.main_page import MainPage
 
 
 class TestOrdersFeedPage:
@@ -51,15 +52,16 @@ class TestOrdersFeedPage:
         profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
 
         orders_feed = OrdersFeedPage(driver)
-        orders_feed.click_on_orders_feed()
+        main_page = MainPage(driver)
+        main_page.click_on_order_feed_link()
         before_orders = orders_feed.get_all_orders_counter()
 
-        orders_feed.click_on_builder()
+        main_page.click_on_builder_link()
         orders_feed.create_order()
         orders_feed.wait_order_placed()
         orders_feed.close_details_order_window()
 
-        orders_feed.click_on_orders_feed()
+        main_page.click_on_order_feed_link()
         after_orders = orders_feed.get_all_orders_counter()
 
         assert int(before_orders) < int(after_orders)
@@ -73,15 +75,16 @@ class TestOrdersFeedPage:
         profile_page.enter_profile(email=data.TEST_USER_EMAIL, password=data.TEST_USER_PASS)
 
         orders_feed = OrdersFeedPage(driver)
-        orders_feed.click_on_orders_feed()
+        main_page = MainPage(driver)
+        main_page.click_on_order_feed_link()
         before_orders = orders_feed.get_today_orders_counter()
 
-        orders_feed.click_on_builder()
+        main_page.click_on_builder_link()
         orders_feed.create_order()
         orders_feed.wait_order_placed()
         orders_feed.close_details_order_window()
 
-        orders_feed.click_on_orders_feed()
+        main_page.click_on_order_feed_link()
         after_orders = orders_feed.get_today_orders_counter()
 
         assert int(before_orders) < int(after_orders)
@@ -99,6 +102,7 @@ class TestOrdersFeedPage:
         orders_feed.wait_order_placed()
         order_number = orders_feed.get_new_order_number()
         orders_feed.close_details_order_window()
-        orders_feed.click_on_orders_feed()
+        main_page = MainPage(driver)
+        main_page.click_on_order_feed_link()
 
         assert order_number in orders_feed.get_orders_in_work()

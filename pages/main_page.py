@@ -1,11 +1,13 @@
 import allure
 from locators.main_page_locators import MainPageLocators
+from locators.orders_feed_locators import OrdersFeedLocators
 from pages.base_page import BasePage
 
 
 class MainPage(BasePage):
-    @allure.step('Нажать на ссылку "Лента заказов"')
+    @allure.step('Нажать на ссылку Лента заказов')
     def click_on_order_feed_link(self):
+        self.find_element_with_wait(MainPageLocators.BUILDER_HEADER)
         self.click_on_element(MainPageLocators.ORDER_FEED_LINK)
 
     @allure.step('Нажать на ссылку "Конструктор"')
@@ -23,8 +25,8 @@ class MainPage(BasePage):
 
     @allure.step('Получить заголовок страницы Лента заказов')
     def get_header_order_feed(self):
-        self.find_element_with_wait(MainPageLocators.ORDER_FEED_HEADER)
-        return self.get_text_from_element(MainPageLocators.ORDER_FEED_HEADER)
+        self.find_element_with_wait(OrdersFeedLocators.ORDER_FEED_HEADER)
+        return self.get_text_from_element(OrdersFeedLocators.ORDER_FEED_HEADER)
 
     @allure.step('Нажать на первый ингредиент в конструкторе')
     def click_on_first_ingredient(self):

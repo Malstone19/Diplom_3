@@ -1,4 +1,5 @@
 import allure
+from locators.login_page_locators import LoginPageLocators
 from locators.reset_pass_page_locators import ResetPassPageLocators
 from pages.base_page import BasePage
 
@@ -6,11 +7,11 @@ from pages.base_page import BasePage
 class ResetPassPage(BasePage):
     @allure.step('Заполнить поле email')
     def fill_email_field(self, email):
-        self.send_keys(ResetPassPageLocators.EMAIL_INPUT, email)
+        self.send_keys(LoginPageLocators.EMAIL_INPUT, email)
 
     @allure.step('Заполнить поле пароль')
     def fill_password_field(self, password):
-        self.send_keys(ResetPassPageLocators.PASS_INPUT, password)
+        self.send_keys(LoginPageLocators.PASS_INPUT, password)
 
     @allure.step('Нажать на кнопку Восстановить пароль')
     def click_on_reset_button(self):
@@ -32,4 +33,4 @@ class ResetPassPage(BasePage):
     @allure.step('Вернуть тип поля, в которое введен пароль')
     def return_tipe_field(self):
         self.click_on_element(ResetPassPageLocators.SHOW_PASS_BUTTON)
-        return self.get_attribute_value(ResetPassPageLocators.PASS_INPUT, 'type')
+        return self.get_attribute_value(LoginPageLocators.PASS_INPUT, 'type')

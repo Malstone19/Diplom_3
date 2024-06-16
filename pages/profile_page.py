@@ -1,12 +1,15 @@
 import allure
+from locators.login_page_locators import LoginPageLocators
+from locators.main_page_locators import MainPageLocators
 from locators.profile_page_locators import ProfilePageLocators
+from locators.reset_pass_page_locators import ResetPassPageLocators
 from pages.base_page import BasePage
 
 
 class ProfilePage(BasePage):
     @allure.step('Нажать на ссылку Личного кабинета')
     def click_on_link_profile(self):
-        self.find_element_with_wait(ProfilePageLocators.ORDER_BUTTON)
+        self.find_element_with_wait(MainPageLocators.ORDER_BUTTON)
         self.click_on_element(ProfilePageLocators.PROFILE_LINK)
 
     @allure.step('Нажать на Историю заказов')
@@ -19,9 +22,9 @@ class ProfilePage(BasePage):
 
     @allure.step('Авторизация на сайте')
     def enter_profile(self, email, password):
-        self.send_keys(ProfilePageLocators.EMAIL_INPUT, email)
-        self.send_keys(ProfilePageLocators.PASS_INPUT, password)
-        self.click_on_element(ProfilePageLocators.RESET_BUTTON)
+        self.send_keys(LoginPageLocators.EMAIL_INPUT, email)
+        self.send_keys(LoginPageLocators.PASS_INPUT, password)
+        self.click_on_element(ResetPassPageLocators.RESET_BUTTON)
 
     @allure.step('Получить имя пользователя из поля, в Личном кабинете')
     def get_user_name_in_profile(self):
@@ -33,4 +36,4 @@ class ProfilePage(BasePage):
 
     @allure.step('Получить заголовок страницы входа')
     def get_header_login_page(self):
-        return self.get_text_from_element(ProfilePageLocators.LOGIN_HEADER)
+        return self.get_text_from_element(LoginPageLocators.LOGIN_HEADER)

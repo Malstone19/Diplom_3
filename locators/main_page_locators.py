@@ -9,6 +9,7 @@ class MainPageLocators:
     BUILDER_HEADER = By.XPATH, './/h1[text()="Соберите бургер"]'
 
     ORDER_FEED_LINK = By.XPATH, './/p[text()="Лента Заказов"]'
+    ORDER_FEED_HEADER = By.XPATH, './/h1[text()="Лента заказов"]'
 
     # Первая булка в конструкторе
     FIRST_BUN = By.XPATH, '(.//a[contains(@href, "/ingredient/")])[1]'
@@ -26,5 +27,3 @@ class MainPageLocators:
 
     # Номер заказа, во всплывающем окне, при оформлении
     ORDER_NUMBER = By.XPATH, './/h2[contains(@class, "title_shadow__3ikwq")]'
-
-    ORDER_FEED_HEADER = By.XPATH, './/h1[text()="Лента заказов"]'
